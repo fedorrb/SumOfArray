@@ -14,7 +14,7 @@ public class Test {
 	public void fillArrayRandomNumber(){
 		Random rn = new Random();
 		for (int i = 0; i < array.length; i++) {
-			array[i] = rn.nextInt(10000);
+			array[i] = rn.nextInt(100);
 		}		
 	}
 	
@@ -58,9 +58,15 @@ public class Test {
 //		for(StoreThreadTime stt: timeCalc){
 //			System.out.println(stt);
 //		}
-		int minTime = timeCalc.get(0).getTimeThread();
-		for(int i = 0; minTime == timeCalc.get(i).getTimeThread(); i++){
-			System.out.println(timeCalc.get(i));
+		if (timeCalc.size() > 0) {
+			try {
+				int minTime = timeCalc.get(0).getTimeThread();
+				for (int i = 0; i < timeCalc.size() && minTime == timeCalc.get(i).getTimeThread(); i++) {
+					System.out.println(timeCalc.get(i));
+				}
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 }
